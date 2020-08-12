@@ -1,0 +1,21 @@
+<div class="nav">
+    <h1 class="title">Notas</h1>
+</div>
+
+<form class="login">
+    <h2>Login</h2>
+
+    <div class="inputs-login">
+        <input placeholder="Username" ng-model="username"/>
+        <input placeholder="Password" ng-model="password" type="password"/>
+    </div>
+
+    <a class="hover" ng-click="sendForm()" ng-hide="loaders.login">Ingresar</a>
+
+    <div class="loader-container" ng-show="loaders.login">
+        <div class="loader"></div>
+    </div>
+    <br/>
+    <br/>
+    <p class="text-login" ng-show="loaders.nofound">Usuario no encontrado</p>
+</form>

@@ -1,0 +1,115 @@
+<div class="nav">
+    <h1 class="title">Notas</h1>
+    <div class="icon-archive">
+        <img src="./src/img/archive.png" ng-click="showArchive()"/>
+    </div> 
+    <a class="button hover" ng-click="logOut()">Salir</a>
+</div>
+
+<div class="container-notes">
+
+    <form 
+        class="form hover" 
+        bg-color="{{ newNote.color }}"
+    >
+        <input 
+            class="input form-title" 
+            ng-model="newNote.title" 
+            placeholder="Titulo"
+            focus
+        />
+        <textarea  
+            class="input form-note" 
+            ng-model="newNote.text" 
+            placeholder="Nota"
+        ></textarea>
+
+        <div class="form-footer">
+            <div class="colors">
+                <div class="color color1 hover" ng-click="setColor('#96E5E2')"></div>
+                <div class="color color2 hover" ng-click="setColor('#FDFD96')"></div>
+                <div class="color color3 hover" ng-click="setColor('#FF969A')"></div>
+                <div class="color color4 hover" ng-click="setColor('white')"></div>
+            </div>
+            <div class="loader-container2" ng-show="loaders.create">
+                <div class="loader2"></div>
+            </div>
+            <a 
+                class="button2 hover" 
+                ng-click="saveNote()"
+                ng-hide="loaders.create"
+            >
+                Guardar
+            </a>
+        </div>
+    </form>
+
+    <br/>
+        <div class="loader-container" ng-show="loaders.find">
+            <div class="loader"></div>
+        </div>
+    <br/>
+
+
+        <div class="head-archive" ng-show="archive">
+            <img src="./src/img/arrow.png" ng-click="hideArchive()"/><h2>Archivo</h2>
+            <br/><br/>
+        </div>
+
+    <div 
+        ng-repeat="(key, note) in notes" 
+        ng-click="openEditeNote(key,note)"
+        bg-color="{{ note.color }}"
+        class="note hover {{ editeNote.key == key && 'opacity' }} 
+        {{ !archive && note.archive == 'true' ? 'hide-note' : archive && note.archive == 'false' && 'hide-note' }}" 
+    >
+        <h4 class="note-title">{{ note.title }}</h4>
+        <p class="note-text">{{ note.text }}</p>
+    </div>
+
+    <div 
+        class="overlay {{ editeNote.open ? 'show' : 'hide' }}" 
+        ng-controller="EditNotesContoller"
+    >
+        <form 
+            class="modal-content {{ editeNote.open ? 'show-content' : 'hide-content' }}" 
+            bg-color="{{ editeNote.note.color }}"
+        >
+
+            <input 
+                class="input form-title" 
+                placeholder="Titulo" 
+                ng-model="editeNote.note.title" 
+            />
+            <textarea  
+                class="input form-note" 
+                placeholder="Nota" 
+                ng-model="editeNote.note.text"
+            ></textarea>
+
+            <div class="form-footer">
+                <div class="colors">
+                    <div class="color color1 hover" ng-click="setEditColor('#96E5E2')"></div>
+                    <div class="color color2 hover" ng-click="setEditColor('#FDFD96')"></div>
+                    <div class="color color3 hover" ng-click="setEditColor('#FF969A')"></div>
+                    <div class="color color4 hover" ng-click="setEditColor('white')"></div>
+
+                    <div class="icon hover" ng-click="deleteNote()">
+                        <img src="./src/img/delete.png" />
+                    </div>
+                    <div class="icon2 hover" ng-click="archiveNote()" ng-hide="archive">
+                        <img src="./src/img/archive.png" />
+                    </div>
+                    <div class="icon2 hover" ng-click="unarchiveNote()" ng-show="archive">
+                        <img src="./src/img/unarchive.png" />
+                    </div>
+
+                </div> 
+                <div class="loader-container2" ng-show="loaders.update">
+                    <div class="loader2"></div>
+                </div>
+                <a class="button2 hover" ng-click="updateNote()" ng-hide="loaders.update">Aceptar</a>
+            </div>
+        </form>
+    </div>
+</div>   
