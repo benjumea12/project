@@ -93,6 +93,7 @@ angular.module("NotesApp")
     $scope.loaders = {find: false, create: false, update: false}
     $scope.archive = false
 
+
     $scope.showArchive = function () {
         $scope.archive = true
     }

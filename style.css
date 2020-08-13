@@ -82,9 +82,7 @@
 
 /* Container notas */
 .container-notes {
-    width: 80%;
-    margin: 0px 10%;
-    padding: 30px 20px;
+    padding: 30px 50px 30px 50px;
     text-align: center;
     vertical-align: top;
 }
@@ -110,13 +108,14 @@
 
 .form-title {
     height: 40px;
-    font-size: 15px;
+    font-size: 17px;
     font-family: Poppins;
     font-weight: bold;
 }
 
 .form-note {
     height: 80px;
+    font-size: 15px;
     font-family: Roboto;
 }
 
@@ -179,6 +178,7 @@
     user-select: none;
     height: 8em;
     overflow: hidden;
+    font-size: 15px;
 }
 
 
