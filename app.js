@@ -1,7 +1,7 @@
 angular.module("NotesApp", ["ngStorage","ngRoute"])
 
 .run(function ($rootScope) {
-    $rootScope.urlServer = "https://60d8f8e407a6.ngrok.io"
+    $rootScope.urlServer = "https://38bb2edb1985.ngrok.io"
 })
 
 .config(function ($routeProvider) {
